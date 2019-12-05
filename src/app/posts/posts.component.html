@@ -1,0 +1,15 @@
+<h3>Posts</h3>
+<hr />
+<div *ngIf="message">
+  <h5>error: {{ message }}</h5>
+</div>
+<div *ngIf="posts && posts.length === 0">
+  <h5>All posts were deleted!</h5>
+</div>
+<div *ngIf="posts && posts.length > 0">
+  <app-post
+    *ngFor="let post of posts; let i = index"
+    [postData]="post"
+    (delete)="deletePost(i)"
+  ></app-post>
+</div>
